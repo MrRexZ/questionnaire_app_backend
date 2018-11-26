@@ -21,6 +21,10 @@ class QuestionnaireListCreate(generics.ListCreateAPIView, mixins.DestroyModelMix
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
 
+@api_view(['GET'])
+def get_questionnaire_list(request):
+    questionnaire_ids = Questionnaire.objects.all()
+    return HttpResponse(questionnaire_ids.values_list("id", flat=True))
 
 @api_view(['GET'])
 def get_next_question(request, questionnaire_id):
