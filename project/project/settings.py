@@ -93,7 +93,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # DJANGO_CORS Config
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000'
+)
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Database
