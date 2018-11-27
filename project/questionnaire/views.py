@@ -39,7 +39,8 @@ def get_next_question(request, questionnaire_id):
         progress_list = get_progress_list(u_id)
         cache.delete(u_id)
         log_result_complete(progress_list)
-        return HttpResponse()
+        res = {'complete' : True, 'dialog' : progress_list}
+        return HttpResponse(json.dumps(res), content_type='application/json')
     else:
         return HttpResponse(get_question_and_answers(questionnaire_id, next_q_id), content_type='application/json')
 
