@@ -24,7 +24,7 @@ class QuestionnaireListCreate(generics.ListCreateAPIView, mixins.DestroyModelMix
 @api_view(['GET'])
 def get_questionnaire_list(request):
     questionnaire_ids = Questionnaire.objects.all()
-    return HttpResponse(json.dumps(list(questionnaire_ids.values_list("id", flat=True))), content_type='application/json')
+    return HttpResponse(json.dumps(list(questionnaire_ids.values("id", "questionnaire_name"))), content_type='application/json')
 
 @api_view(['GET'])
 def get_next_question(request, questionnaire_id):
